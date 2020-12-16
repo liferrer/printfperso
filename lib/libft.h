@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/04 12:16:22 by liso             ###   ########.fr       */
+/*   Updated: 2020/12/16 15:33:04 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_params
 	int		precision;
 	int		neg;
 	int		len;
+	int		tmplen;
 }	t_params;
 
 void		*ft_calloc(size_t count, size_t size);
@@ -50,6 +51,7 @@ char		*ft_strdup(char const *s);
 char		*ft_strndup(char const *s, size_t n);
 
 char		*ft_strcat(char *s1, char *s2);
+void	ft_strncat(char *s1, char *s2, int len1, int len2);
 
 char		*ft_strfjoin(char *s1, char *s2, int len1, int len2);
 char		*ft_strnjoin(char *s1, char *s2, int len1, int len2);
@@ -61,7 +63,7 @@ int			ft_printf(const char *string, ...);
 int			copyandsearch(t_params *params, t_flags *flags, char *string, char **result, va_list list);
 void		display(char *str);
 
-void		ft_get_types(t_params *params, char **result, va_list list);
+void		ft_get_types(t_params *params, t_flags *flags, char **result, va_list list);
 long		ft_get_size(unsigned long nb);
 char		*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list);
 char    	*ft_get_value(char *string, va_list list, int *param);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_all_infos.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/15 15:43:34 by liso             ###   ########.fr       */
+/*   Updated: 2020/12/16 15:33:05 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 	int		width;
 	char	*str;
 
-	diff = (params->width) - ((int)ft_strlen(tmp));
+	if (params->width == 0)
+		return (ft_strdup(tmp));
+	diff = (params->width) - (params->tmplen);
 	width = params->width;
-	if (width <= (int)ft_strlen(tmp))
+	if (width <= params->tmplen)
 		str = ft_strdup(tmp);
 	else 
 	{
@@ -32,6 +34,7 @@ char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 		if (flags->minus == 1)
 			str = ft_flag_minus(tmp, str, diff);
 	}
+	free(tmp);
 	return (str);
 }
 
@@ -42,11 +45,13 @@ char	*ft_get_precision(t_params *params, char *tmp)
 	int		diff;
 	char	*str;
 
+	if (params->precision == 0)
+		return (ft_strdup(tmp));
 	value = params->precision;
 	diff = 0;
 	str = NULL;
 	params->tmplen = params->precision;
-	if (params->precision = 0)
+	if (params->precision == 0)
 		return (ft_strdup(tmp));
 	if (params->type == 's')
 		str = ft_strndup(tmp, value);
@@ -58,6 +63,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 			str = ft_strdup(tmp);
 	}
 	params->precision = 0;
+	free(tmp);
 	return (str);
 }
 
@@ -106,23 +112,23 @@ char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 	return (string);
 }
 
-void	ft_get_types(t_params *params, char **result, va_list list)
+void	ft_get_types(t_params *params, t_flags *flags, char **result, va_list list)
 //Récupère les types, et applique précision & la width
 {
 	char	*tmp;
-	char	*new;
+	char	*tmpwidth;
+	char	*tmpprec;
 
 	tmp = deal_with_type(params, list);
 	params->tmplen = ft_strlen(tmp);
 	if (params->type == 'c')
 		params->tmplen = 1;
-	printf("tmp = %s\n", tmp);
-	if (params->precision)
-	{
-		new = ft_get_precision(params, tmp);
-		*result = ft_strjoin(*result, new);
-	}
-	else
-		*result = ft_strjoin(*result, tmp);	
-	free(tmp);
+	printf("tmp = %d\n", params->tmplen);
+
+	tmpprec = ft_get_precision(params, tmp);
+	printf("tmpprec = %d\n", params->tmplen);
+	tmpwidth = ft_get_width(params, flags, tmpprec);	
+	printf("tmpwidth = %d\n", params->tmplen);
+	*result = ft_strfjoin(*result, tmpprec, params->len, params->tmplen);
+	params->len += params->tmplen;
 }
