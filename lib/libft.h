@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/16 15:33:04 by liferrer         ###   ########.fr       */
+/*   Updated: 2020/12/17 14:56:22 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char		*ft_strdup(char const *s);
 char		*ft_strndup(char const *s, size_t n);
 
 char		*ft_strcat(char *s1, char *s2);
-void	ft_strncat(char *s1, char *s2, int len1, int len2);
+void		ft_strncat(char *s1, char *s2, int len1, int len2);
 
 char		*ft_strfjoin(char *s1, char *s2, int len1, int len2);
 char		*ft_strnjoin(char *s1, char *s2, int len1, int len2);
@@ -64,7 +64,7 @@ int			copyandsearch(t_params *params, t_flags *flags, char *string, char **resul
 void		display(char *str);
 
 void		ft_get_types(t_params *params, t_flags *flags, char **result, va_list list);
-long		ft_get_size(unsigned long nb);
+long		ft_get_size(unsigned long nb, int base);
 char		*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list);
 char    	*ft_get_value(char *string, va_list list, int *param);
 char		*ft_get_precision(t_params *params, char *tmp);
@@ -77,8 +77,9 @@ char		*deal_with_hexa(unsigned long nb, char *base);
 
 void    	ft_fill(char *s, char c, int nb);
 char		*ft_prec_apply(char *str, char *tmp, int diff, int value, t_params *params);
-char    	*ft_flag_zero(char *tmp, char *str, int diff);
-char		*ft_flag_minus(char *tmp, char *str, int diff);
+void		ft_flag_zero(char *tmp, char *str, int diff);
+void		ft_flag_minus(char *tmp, char *str, int diff);
+void		ft_no_flag(char *tmp, char *str, int diff);
 void 		ft_minus(t_flags *flags, char *string);
 void 		ft_zero(t_flags *flags, char *string);
 

@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:08:30 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/16 15:33:12 by liferrer         ###   ########.fr       */
+/*   Updated: 2020/12/17 11:54:53 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_strncat(char *s1, char *s2, int len1, int len2)
 	j = len1;
 	while (i < len2)
 	{
-		s2[j] = s1[i];
+		s1[j] = s2[i];
 		i++;
 		j++;
 	}

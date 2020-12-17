@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/16 15:33:08 by liferrer         ###   ########.fr       */
+/*   Updated: 2020/12/17 12:55:41 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ char	*ft_prec_apply(char *str, char *tmp, int diff, int value, t_params *params)
 		str[0] = '-';
 		diff = diff - 1;
 	}
-	printf("diff = |%d|\n", diff);
 	while (*tmp != '\0')
 	{
 		str[diff] = *tmp;
 		diff++;
 		tmp++;
 	}
-	printf("TESTI STR = |%s|\n", str);
+	params->tmplen = params->precision;
 	return (str);
 }

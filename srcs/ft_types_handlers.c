@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/16 15:33:04 by liferrer         ###   ########.fr       */
+/*   Updated: 2020/12/17 14:56:16 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char		*deal_with_hexa(unsigned long nb, char *base)
     char	*str;
     int		i;
 
-    i = ft_get_size(nb) - 1;
-    if (!(str = malloc(sizeof(char) * (ft_get_size(nb) + 1))))
+    i = ft_get_size(nb, 16) - 1;
+    if (!(str = malloc(sizeof(char) * (ft_get_size(nb, 16) + 1))))
         return NULL;
-    str[ft_get_size(nb)] = '\0';
+    str[ft_get_size(nb, 16)] = '\0';
     while ((long)nb >= 0 && i >= 0)
     {
         str[i] = base[nb % 16];
