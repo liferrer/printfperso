@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tools_width.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/17 13:21:26 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:35:02 by liso             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_flag_zero(char *tmp, char *str, int diff)
 {
-	printf("caca");
 	while (diff != 0)
 	{
 		*str = '0';
@@ -29,15 +28,23 @@ void	ft_flag_zero(char *tmp, char *str, int diff)
 	}
 }
 
-void	ft_flag_minus(char *tmp, char *str, int diff)
+void	ft_flag_minus(char *tmp, char *str, int diff, t_params *params)
 {
-	while (*tmp != '\0')
+
+	if (params->neg == 1)
+	{
+		*str = '-';
+		str++;
+		tmp++;
+	}
+	while (params->tmplen > 0)
 	{
 		*str = *tmp;
 		str++;
 		tmp++;
+		params->tmplen--;
 	}
-	while (diff != 0)
+	while (diff > 0)
 	{
 		*str = ' ';
 		diff--;

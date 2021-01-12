@@ -16,6 +16,7 @@ SRCS		=	srcs/ft_printf.c\
 				lib/ft_strcat.c\
 				lib/ft_strchr.c\
 				lib/ft_strdup.c\
+				lib/ft_strdups.c\
 				lib/ft_strfjoin.c\
 				lib/ft_strjoinchar.c\
 				lib/ft_strlen.c\

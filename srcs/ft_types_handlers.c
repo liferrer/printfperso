@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_types_handlers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/17 14:56:16 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:25:36 by liso             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ char        *deal_with_pointers(va_list list)
 {
     char	*hexanum;
     char	*result;
+	void	*ptr;
 
-    hexanum = deal_with_hexa((unsigned long)va_arg(list, void*), LOWHEXA);
-    result = ft_strnjoin("0x", hexanum, 2, ft_strlen(hexanum));
+	ptr = va_arg(list, void*);
+	if (!ptr)
+		return (result = ft_strdup("0x0"));
+    hexanum = deal_with_hexa((unsigned long)ptr, LOWHEXA);
+    result = ft_strnjoin("0x1", hexanum, 3, ft_strlen(hexanum));
     return (result);
 }
 
@@ -59,7 +63,7 @@ char        *deal_with_type(t_params *params, va_list list)
 	if (params->type == 'c')
 		tmp = deal_with_char(tmp, list);
 	if (params->type == 's')
-		tmp = ft_strdup(va_arg(list, char*));
+		tmp = ft_strdups(va_arg(list, void *));
 	if (params->type == 'p')
 		tmp = deal_with_pointers(list);
 	if (params->type == 'd')

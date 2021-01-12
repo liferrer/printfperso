@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_all_infos.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/17 14:56:17 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/01/12 13:08:42 by liso             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,16 @@ char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 			str = ft_strdup(tmp);
 		else 
 		{
-			params->tmplen = params->width;
 			if (!(str = (char*)ft_calloc(sizeof(char), (params->width + 1))))
 				return (NULL);
+			ft_memset(str, 0, ft_strlen(str));
 			if (flags->zero == 1)
 				ft_flag_zero(tmp, str, diff);
 			else if (flags->minus == 1)
-				ft_flag_minus(tmp, str, diff);
+				ft_flag_minus(tmp, str, diff, params);
 			else
 				ft_no_flag(tmp, str, diff);
+			params->tmplen = params->width;
 		}
 	}
 	params->width = 0;
@@ -53,7 +54,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 	int		diff;
 	char	*str;
 
-	if (params->precision == 0 || params->type == 'c' || params->type == 'p')
+	if (params->prec == 0 || params->type == 'c' || params->type == 'p')
 		str = ft_strdup(tmp);
 	else
 	{
@@ -75,6 +76,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 		}
 	}
 	params->precision = 0;
+	params->prec = 0;
 	free(tmp);
 	return (str);
 }
@@ -110,9 +112,12 @@ char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 			string = ft_get_value(string, list, &params->width);
 		if (*string == '.')
 		{
+			params->prec = 1;
 			string++;
 			if ((*string >= '0' && *string <= '9') || *string == '*')
 				string = ft_get_value(string, list, &params->precision);
+			if (params->precision < 0)
+				params->prec = 0;
 		}	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 		if (ft_strchr("cspdiuxX%", *string))
 		{

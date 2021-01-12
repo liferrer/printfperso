@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2020/12/17 14:56:22 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/01/11 16:06:40 by liso             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_params
 {
 	char	type;
 	int		width;
+	int		prec;
 	int		precision;
 	int		neg;
 	int		len;
@@ -49,6 +50,7 @@ char		*ft_strchr(char const *s, int c);
 
 char		*ft_strdup(char const *s);
 char		*ft_strndup(char const *s, size_t n);
+char		*ft_strdups(const char *s);
 
 char		*ft_strcat(char *s1, char *s2);
 void		ft_strncat(char *s1, char *s2, int len1, int len2);
@@ -72,13 +74,14 @@ char		*ft_get_width(t_params *params, t_flags *flags, char *tmp);
 
 char        *deal_with_type(t_params *params, va_list list);
 char		*deal_with_char(char *tmp, va_list list);
+char		*deal_with_string(char *tmp, va_list list);
 char        *deal_with_pointers(va_list list);
 char		*deal_with_hexa(unsigned long nb, char *base);
 
 void    	ft_fill(char *s, char c, int nb);
 char		*ft_prec_apply(char *str, char *tmp, int diff, int value, t_params *params);
 void		ft_flag_zero(char *tmp, char *str, int diff);
-void		ft_flag_minus(char *tmp, char *str, int diff);
+void		ft_flag_minus(char *tmp, char *str, int diff, t_params *params);
 void		ft_no_flag(char *tmp, char *str, int diff);
 void 		ft_minus(t_flags *flags, char *string);
 void 		ft_zero(t_flags *flags, char *string);
