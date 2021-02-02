@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/02 16:20:39 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:21:07 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_precision_apply(char *str, char *tmp, int diff, t_params *params)
 
 	strr = ft_strfjoin("-", start, 1, diff);
 
-	start = ft_strfjoin(strr, tmp, ft_strlen(strr, params->tmplen))
+	start = ft_strfjoin(strr, tmp, ft_strlen(strr, params->tmplen));
 
 	return (start);
 }
