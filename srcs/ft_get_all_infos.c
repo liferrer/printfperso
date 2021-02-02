@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_all_infos.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/01/12 13:08:42 by liso             ###   ########.fr       */
+/*   Updated: 2021/02/02 15:16:24 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 		else /*if (ft_strchr("diouxX", params->type))*/
 		{
 			if (params->precision > (int)ft_strlen(tmp))
-				str = ft_prec_apply(str, tmp, diff, params->precision, params);
+				str = ft_prec_apply(str, tmp, diff, params);
 			else /*if (value <= len de tmp*/
 				str = ft_strdup(tmp);
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 16:10:55 by liferrer          #+#    #+#             */
-/*   Updated: 2021/01/12 13:37:52 by liso             ###   ########.fr       */
+/*   Updated: 2021/02/02 15:30:18 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_length(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa(int n, t_params *params)
 {
 	int		i;
 	int		j;
@@ -39,7 +39,7 @@ char		*ft_itoa(int n)
 		return (ft_strdup("-2147483648"));
 	j = n < 0 ? 1 : 0;
 	n = j == 1 ? n * -1 : n;
-	i = ft_length(n) - 1 + j + 1;
+	i = ft_length(n);
 	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	str[i] = '\0';
@@ -50,8 +50,10 @@ char		*ft_itoa(int n)
 	}
 	if (j == 1)
 	{
-		str[0] = '-';
+	//	str[0] = '-';
 		params->neg = 1;
+	//	params->tmplen = ft_length(n);
 	}
+//	printf(">>> str =  %s <<<\n >>> str len = %zu <<<\n", str, ft_strlen(str));
 	return (str);
 }

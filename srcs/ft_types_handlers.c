@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_types_handlers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/01/12 13:25:36 by liso             ###   ########.fr       */
+/*   Updated: 2021/02/02 12:13:17 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ char        *deal_with_type(t_params *params, va_list list)
 	if (params->type == 'p')
 		tmp = deal_with_pointers(list);
 	if (params->type == 'd')
-		tmp = ft_itoa(va_arg(list, int));
+		tmp = ft_itoa(va_arg(list, int), params);
 	if (params->type == 'u')
 		tmp = ft_ultoa(va_arg(list, int));
 	if (params->type == 'i')
-		tmp = ft_itoa(va_arg(list, int));
+		tmp = ft_itoa(va_arg(list, int), params);
 	if (params->type == 'x')
 		tmp = deal_with_hexa(va_arg(list, unsigned int), LOWHEXA);
 	if (params->type == 'X')

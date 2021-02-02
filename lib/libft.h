@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liso <liso@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2021/01/11 16:06:40 by liso             ###   ########.fr       */
+/*   Updated: 2021/02/02 15:07:55 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 
 int			ft_atoi(const char *s);
-char		*ft_itoa(int n);
+char		*ft_itoa(int n, t_params *params);
 char		*ft_ultoa(int n);
 
 char		*ft_strchr(char const *s, int c);
@@ -79,7 +79,7 @@ char        *deal_with_pointers(va_list list);
 char		*deal_with_hexa(unsigned long nb, char *base);
 
 void    	ft_fill(char *s, char c, int nb);
-char		*ft_prec_apply(char *str, char *tmp, int diff, int value, t_params *params);
+char		*ft_prec_apply(char *str, char *tmp, int diff, t_params *params);
 void		ft_flag_zero(char *tmp, char *str, int diff);
 void		ft_flag_minus(char *tmp, char *str, int diff, t_params *params);
 void		ft_no_flag(char *tmp, char *str, int diff);
