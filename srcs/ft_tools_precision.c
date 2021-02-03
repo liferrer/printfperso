@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/02 16:21:07 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/03 13:22:22 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,50 +24,26 @@ void    ft_fill(char *s, char c, int nb)
 
 char	*ft_prec_apply(char *str, char *tmp, int diff, t_params *params)
 {
-	if (!(str = (char*)ft_calloc(sizeof(char), (params->precision) + 2)))
-		return (NULL);
-	
-	diff = (params->precision - ft_strlen(tmp));
-	ft_fill(str, '0', diff);
-	printf(">>> diff = &%d <<<\n", diff);
-	if (params->neg == 1)
-	{
-		str[0] = '-';
-	//	diff = diff - 1;
-	//printf(">>> tmp = %s <<< \n", tmp);
-	}
-	while (params->tmplen >= 0)
-	{
-	printf(">>> tmp = %s <<< \n", tmp);
-		str[diff] = *tmp;
-		diff++;
-		tmp++;
-		params->tmplen--;
-	}
-	params->tmplen = params->precision;
-	return (str);
-}
-
-char	*ft_precision_apply(char *str, char *tmp, int diff, t_params *params)
-{
 	char	*start;
 	char	*strr;
 	int		i;
 
-	strr = NULL;
+	strr = ft_strdup("");
+	str = ft_strdup("");
 	i = 0;
+	diff = (params->precision - ft_strlen(tmp));
 	if (!(start = (char*)ft_calloc(sizeof(char), diff + 1)))
 		return (NULL);
-	
-	while (start[i] != '\0')
+	start[diff] = '\0';
+	ft_fill(start, '0', diff);
+	if (params->neg == 1)
 	{
-		start[i] = '0';
-		i++;
+		strr = ft_strnjoin("-", start, 1, ft_strlen(start));
+		str = ft_strnjoin(strr, tmp, ft_strlen(strr), params->tmplen);
 	}
-
-	strr = ft_strfjoin("-", start, 1, diff);
-
-	start = ft_strfjoin(strr, tmp, ft_strlen(strr, params->tmplen));
-
-	return (start);
+	else
+		str = ft_strnjoin(start, tmp, ft_strlen(start), params->tmplen);
+	params->tmplen = params->precision + params->neg;
+	params->neg = 0;
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/02 15:07:55 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/03 16:09:21 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ void		display(char *str);
 void		ft_get_types(t_params *params, t_flags *flags, char **result, va_list list);
 long		ft_get_size(unsigned long nb, int base);
 char		*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list);
-char    	*ft_get_value(char *string, va_list list, int *param);
+char   		*ft_get_value(char *string, va_list list, int *param, t_flags *flags, t_params *params);
 char		*ft_get_precision(t_params *params, char *tmp);
 char		*ft_get_width(t_params *params, t_flags *flags, char *tmp);
+char		*ft_get_last(t_params *params, char *tmp);
 
 char        *deal_with_type(t_params *params, va_list list);
 char		*deal_with_char(char *tmp, va_list list);
@@ -82,7 +83,7 @@ void    	ft_fill(char *s, char c, int nb);
 char		*ft_prec_apply(char *str, char *tmp, int diff, t_params *params);
 void		ft_flag_zero(char *tmp, char *str, int diff);
 void		ft_flag_minus(char *tmp, char *str, int diff, t_params *params);
-void		ft_no_flag(char *tmp, char *str, int diff);
+void		ft_no_flag(char *tmp, char *str, int diff, t_params *params);
 void 		ft_minus(t_flags *flags, char *string);
 void 		ft_zero(t_flags *flags, char *string);
 

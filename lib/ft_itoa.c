@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 16:10:55 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/02 15:30:18 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/03 14:50:52 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,6 @@ char		*ft_itoa(int n, t_params *params)
 		n = n / 10;
 	}
 	if (j == 1)
-	{
-	//	str[0] = '-';
 		params->neg = 1;
-	//	params->tmplen = ft_length(n);
-	}
-//	printf(">>> str =  %s <<<\n >>> str len = %zu <<<\n", str, ft_strlen(str));
 	return (str);
 }
