@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 16:09:19 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 12:30:38 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ char	*ft_get_last(t_params *params, char *tmp)
 	if (params->neg == 1)
 	{
 		str = ft_strnjoin("-", tmp, 1, params->tmplen);
+		params->tmplen++;
+	}
+	else if (params->space == 1)
+	{
+		str = ft_strnjoin(" ", tmp, 1, params->tmplen);
 		params->tmplen++;
 	}
 	else
@@ -131,6 +136,11 @@ char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 	while (*string)
 	{
 		string++;
+		while(*string == ' ')
+		{
+			params->space = 1;
+			string++;
+		}
 		while(*string == '0' || *string == '-')
 		{
 			if (*string == '0')
@@ -172,6 +182,8 @@ void	ft_get_types(t_params *params, t_flags *flags, char **result, va_list list)
 	char	*tmplast;
 
 	tmp = deal_with_type(params, list);
+	if (params->neg == 1)
+		params->space = 0;
 	params->tmplen = ft_strlen(tmp);
 	if (params->type == 'c')
 		params->tmplen = 1;

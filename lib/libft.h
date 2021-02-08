@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 15:52:42 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 16:09:21 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 12:17:56 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_params
 	int		neg;
 	int		len;
 	int		tmplen;
+	int		space;
 }	t_params;
 
 void		*ft_calloc(size_t count, size_t size);
