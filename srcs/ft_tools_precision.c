@@ -6,20 +6,20 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 13:22:22 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:28:32 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-void    ft_fill(char *s, char c, int nb)
+void	ft_fill(char *s, char c, int nb)
 {
-    while (nb > 0)
-    {
-        *s = c;
-        s++;
-        nb--;
-    }
+	while (nb > 0)
+	{
+		*s = c;
+		s++;
+		nb--;
+	}
 }
 
 char	*ft_prec_apply(char *str, char *tmp, int diff, t_params *params)

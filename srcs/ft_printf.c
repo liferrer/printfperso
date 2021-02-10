@@ -6,14 +6,13 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 16:09:28 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:26:21 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-int		copyandsearch(t_params *params, t_flags *flags, char *string, char **result, va_list list) 
-//Copie le texte jusqu'au '%', orchestre la récupération des données, génère la chaîne finale
+int		copyandsearch(t_params *params, t_flags *flags, char *string, char **result, va_list list)
 {
 	while (*string)
 	{
@@ -23,7 +22,7 @@ int		copyandsearch(t_params *params, t_flags *flags, char *string, char **result
 			ft_get_types(params, flags, result, list);
 			if (*(string + 1) == '\0')
 				return (0);
-			string++;			
+			string++;
 		}
 		if (*string != '%')
 		{
@@ -36,7 +35,6 @@ int		copyandsearch(t_params *params, t_flags *flags, char *string, char **result
 }
 
 int		ft_printf(const char *string, ...)
-//Initialize va_arg, lance le traîtement de données, return la len finale
 {
 	va_list		list;
 	t_params	params;
@@ -55,4 +53,3 @@ int		ft_printf(const char *string, ...)
 	free(result);
 	return (params.len);
 }
-// voir prec et width !!!!!!

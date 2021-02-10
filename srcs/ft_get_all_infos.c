@@ -6,13 +6,13 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/08 12:30:38 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:24:32 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-char	*ft_get_last(t_params *params, char *tmp)
+char		*ft_get_last(t_params *params, char *tmp)
 {
 	char	*str;
 
@@ -31,8 +31,7 @@ char	*ft_get_last(t_params *params, char *tmp)
 	return (str);
 }
 
-char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
-//Applique la width
+char		*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 {
 	int		diff;
 	int		width;
@@ -46,7 +45,7 @@ char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 		width = params->width;
 		if (width <= params->tmplen)
 			str = ft_strdup(tmp);
-		else 
+		else
 		{
 			if (!(str = (char*)ft_calloc(sizeof(char), (params->width + 1))))
 				return (NULL);
@@ -67,13 +66,11 @@ char	*ft_get_width(t_params *params, t_flags *flags, char *tmp)
 	return (str);
 }
 
-char	*ft_get_precision(t_params *params, char *tmp)
-//Applique la précision
+char		*ft_get_precision(t_params *params, char *tmp)
 {
 	int		diff;
 	char	*str;
 
-	
 	if (params->prec == 0 || params->type == 'c' || params->type == 'p')
 		str = ft_strdup(tmp);
 	else
@@ -87,7 +84,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 			str = ft_strndup(tmp, params->precision);
 			params->tmplen = params->precision;
 		}
-		else /*if (ft_strchr("diouxX", params->type))*/
+		else
 		{
 			if (!(strcmp(tmp, "0")) && params->precision == 0)
 			{
@@ -96,7 +93,7 @@ char	*ft_get_precision(t_params *params, char *tmp)
 			}
 			if (params->precision > (int)ft_strlen(tmp))
 				str = ft_prec_apply(str, tmp, diff, params);
-			else /*if (value <= len de tmp*/
+			else
 				str = ft_strdup(tmp);
 		}
 	}
@@ -106,42 +103,40 @@ char	*ft_get_precision(t_params *params, char *tmp)
 	return (str);
 }
 
-char    *ft_get_value(char *string, va_list list, int *param, t_flags *flags, t_params *params)
-//Permet de récupérer les valeurs numériques (chiffre ou *)
+char		*ft_get_value(char *string, va_list list, int *param, t_flags *flags, t_params *params)
 {
-    *param = 0;
-    if (*string >= '0' && *string <= '9')
-    {
-        while (*string >= '0' && *string <= '9')
-    	{
-		    *param = *param * 10 + (*string - '0');
-		    string++;
-	    }
-    }
-    else if (*string == '*')
+	*param = 0;
+	if (*string >= '0' && *string <= '9')
 	{
-			*param = va_arg(list, int);
-			if (*param < 0 && !(params->prec))
-			{
-				*param *= -1;
-				flags->minus = 1; 
-			}
+		while (*string >= '0' && *string <= '9')
+		{
+			*param = *param * 10 + (*string - '0');
+			string++;
+		}
 	}
-    return (string);
+	else if (*string == '*')
+	{
+		*param = va_arg(list, int);
+		if (*param < 0 && !(params->prec))
+		{
+			*param *= -1;
+			flags->minus = 1;
+		}
+	}
+	return (string);
 }
 
-char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
-//Remplit la structure avec les données
+char		*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 {
 	while (*string)
 	{
 		string++;
-		while(*string == ' ')
+		while (*string == ' ')
 		{
 			params->space = 1;
 			string++;
 		}
-		while(*string == '0' || *string == '-')
+		while (*string == '0' || *string == '-')
 		{
 			if (*string == '0')
 				ft_zero(flags, string);
@@ -160,7 +155,7 @@ char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 				string = ft_get_value(string, list, &params->precision, flags, params);
 			if (params->precision < 0)
 				params->prec = 0;
-		}	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+		}
 		if (ft_strchr("cspdiuxX%", *string))
 		{
 			params->type = *string;
@@ -169,12 +164,10 @@ char	*ft_get_info(t_params *params, t_flags *flags, char *string, va_list list)
 	}
 	if (flags->minus)
 		flags->zero = 0;
-	//printf("zero = %d\nminus = %d\nwidth = %d\nprecision = %d\n", flags->zero, flags->minus, params->width, params->precision);
 	return (string);
 }
 
-void	ft_get_types(t_params *params, t_flags *flags, char **result, va_list list)
-//Récupère les types, et applique précision & la width
+void		ft_get_types(t_params *params, t_flags *flags, char **result, va_list list)
 {
 	char	*tmp;
 	char	*tmpwidth;
@@ -187,10 +180,8 @@ void	ft_get_types(t_params *params, t_flags *flags, char **result, va_list list)
 	params->tmplen = ft_strlen(tmp);
 	if (params->type == 'c')
 		params->tmplen = 1;
-	//printf("tmp = %d\n", params->tmplen);
-
 	tmpprec = ft_get_precision(params, tmp);
-	tmpwidth = ft_get_width(params, flags, tmpprec);	
+	tmpwidth = ft_get_width(params, flags, tmpprec);
 	tmplast = ft_get_last(params, tmpwidth);
 	*result = ft_strfjoin(*result, tmplast, params->len, params->tmplen);
 	params->len += params->tmplen;

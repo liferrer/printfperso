@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 14:51:11 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:29:06 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ void	ft_flag_zero(char *tmp, char *str, int diff)
 
 void	ft_flag_minus(char *tmp, char *str, int diff, t_params *params)
 {
-
 	if (params->neg == 1)
 	{
 		*str = '-';
 		str++;
-	//	tmp++;
 		params->neg = 0;
 	}
 	while (params->tmplen > 0)
