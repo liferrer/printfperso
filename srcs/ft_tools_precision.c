@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/08 14:28:32 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:34:48 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_fill(char *s, char c, int nb)
 	}
 }
 
-char	*ft_prec_apply(char *str, char *tmp, int diff, t_params *params)
+char	*ft_prec_apply(char *str, char *tmp, int diff, t_prm *prm)
 {
 	char	*start;
 	char	*strr;
@@ -31,19 +31,19 @@ char	*ft_prec_apply(char *str, char *tmp, int diff, t_params *params)
 	strr = ft_strdup("");
 	str = ft_strdup("");
 	i = 0;
-	diff = (params->precision - ft_strlen(tmp));
+	diff = (prm->precision - ft_strlen(tmp));
 	if (!(start = (char*)ft_calloc(sizeof(char), diff + 1)))
 		return (NULL);
 	start[diff] = '\0';
 	ft_fill(start, '0', diff);
-	if (params->neg == 1)
+	if (prm->neg == 1)
 	{
 		strr = ft_strnjoin("-", start, 1, ft_strlen(start));
-		str = ft_strnjoin(strr, tmp, ft_strlen(strr), params->tmplen);
+		str = ft_strnjoin(strr, tmp, ft_strlen(strr), prm->tmplen);
 	}
 	else
-		str = ft_strnjoin(start, tmp, ft_strlen(start), params->tmplen);
-	params->tmplen = params->precision + params->neg;
-	params->neg = 0;
+		str = ft_strnjoin(start, tmp, ft_strlen(start), prm->tmplen);
+	prm->tmplen = prm->precision + prm->neg;
+	prm->neg = 0;
 	return (str);
 }

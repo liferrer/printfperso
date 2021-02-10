@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/08 15:00:50 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:35:33 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,27 @@ char		*deal_with_char(char *tmp, va_list list)
 	return (tmp);
 }
 
-char		*deal_with_type(t_params *params, va_list list)
+char		*deal_with_type(t_prm *prm, va_list list)
 {
 	char		*tmp;
 
-	if (params->type == '%')
+	if (prm->type == '%')
 		tmp = ft_strdup("%");
-	if (params->type == 'c')
+	if (prm->type == 'c')
 		tmp = deal_with_char(tmp, list);
-	if (params->type == 's')
+	if (prm->type == 's')
 		tmp = ft_strdups(va_arg(list, void *));
-	if (params->type == 'p')
+	if (prm->type == 'p')
 		tmp = deal_with_pointers(list);
-	if (params->type == 'd')
-		tmp = ft_itoa(va_arg(list, int), params);
-	if (params->type == 'u')
+	if (prm->type == 'd')
+		tmp = ft_itoa(va_arg(list, int), prm);
+	if (prm->type == 'u')
 		tmp = ft_ultoa(va_arg(list, int));
-	if (params->type == 'i')
-		tmp = ft_itoa(va_arg(list, int), params);
-	if (params->type == 'x')
+	if (prm->type == 'i')
+		tmp = ft_itoa(va_arg(list, int), prm);
+	if (prm->type == 'x')
 		tmp = deal_with_hexa(va_arg(list, unsigned int), LOWHEXA);
-	if (params->type == 'X')
+	if (prm->type == 'X')
 		tmp = deal_with_hexa(va_arg(list, unsigned int), UPHEXA);
 	return (tmp);
 }

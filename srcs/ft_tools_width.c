@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/08 14:29:06 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:22:32 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ void	ft_flag_zero(char *tmp, char *str, int diff)
 	}
 }
 
-void	ft_flag_minus(char *tmp, char *str, int diff, t_params *params)
+void	ft_flag_minus(char *tmp, char *str, int diff, t_prm *prm)
 {
-	if (params->neg == 1)
+	if (prm->neg == 1)
 	{
 		*str = '-';
 		str++;
-		params->neg = 0;
+		prm->neg = 0;
 	}
-	while (params->tmplen > 0)
+	while (prm->tmplen > 0)
 	{
 		*str = *tmp;
 		str++;
 		tmp++;
-		params->tmplen--;
+		prm->tmplen--;
 	}
 	while (diff > 0)
 	{
@@ -51,7 +51,7 @@ void	ft_flag_minus(char *tmp, char *str, int diff, t_params *params)
 	}
 }
 
-void	ft_no_flag(char *tmp, char *str, int diff, t_params *params)
+void	ft_no_flag(char *tmp, char *str, int diff, t_prm *prm)
 {
 	while (diff != 0)
 	{
@@ -61,10 +61,10 @@ void	ft_no_flag(char *tmp, char *str, int diff, t_params *params)
 	}
 	while (*tmp != '\0')
 	{
-		if (params->neg == 1)
+		if (prm->neg == 1)
 		{
 			*str = '-';
-			params->neg = 0;
+			prm->neg = 0;
 			str++;
 		}
 		*str = *tmp;

@@ -6,21 +6,21 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/08 14:41:45 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:21:07 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-void	ft_minus(t_flags *flags, char *string)
+void	ft_minus(t_prm *prm, char *string)
 {
-	flags->minus = 1;
+	prm->minus = 1;
 	string++;
 }
 
-void	ft_zero(t_flags *flags, char *string)
+void	ft_zero(t_prm *prm, char *string)
 {
-	flags->zero = 1;
+	prm->zero = 1;
 	string++;
 }
 

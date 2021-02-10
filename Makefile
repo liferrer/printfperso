@@ -8,6 +8,7 @@ SRCS		=	srcs/ft_printf.c\
 				srcs/ft_tools_width.c\
 				srcs/ft_tools.c\
 				srcs/ft_types_handlers.c\
+				srcs/ft_tools_all_infos.c\
 				lib/ft_atoi.c\
 				lib/ft_calloc.c\
 				lib/ft_itoa.c\
