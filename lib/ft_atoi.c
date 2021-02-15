@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 12:07:45 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/03 14:50:55 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/15 11:15:28 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			ft_atoi(const char *str)
 {
-	int				i;
-	int				ng;
-	long long int			nb;
+	int					i;
+	int					ng;
+	long long int		nb;
 
 	i = 0;
 	ng = 1;

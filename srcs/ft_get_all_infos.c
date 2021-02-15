@@ -6,7 +6,7 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/10 15:25:40 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/15 12:10:09 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char		*ft_get_info(t_prm *prm, char *string, va_list list)
 		while (*string == '0' || *string == '-')
 			string = ft_check_zero_minus(string, prm);
 		if ((*string >= '0' && *string <= '9') || *string == '*')
-			string = ft_get_value(string, list, &prm->width, prm);
+			string = ft_get_vl(string, list, &prm->width, prm);
 		if (*string == '.')
 			string = ft_get_info_prec(string, prm, list);
 		if (ft_strchr("cspdiuxX%", *string))

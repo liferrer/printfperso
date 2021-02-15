@@ -6,32 +6,32 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/10 15:34:32 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/15 12:10:40 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-char    *ft_check_zero_minus(char *string, t_prm *prm)
+char	*ft_check_zero_minus(char *string, t_prm *prm)
 {
 	if (*string == '0')
 		ft_zero(prm, string);
 	if (*string == '-')
 		ft_minus(prm, string);
 	string++;
-    return (string);
+	return (string);
 }
 
-char    *ft_get_info_prec(char *string, t_prm *prm, va_list list)
+char	*ft_get_info_prec(char *string, t_prm *prm, va_list list)
 {
-    	prm->zero = 0;
-    	prm->prec = 1;
-    	string++;
-    	if ((*string >= '0' && *string <= '9') || *string == '*')
-    		string = ft_get_value(string, list, &prm->precision, prm);
-    	if (prm->precision < 0)
-    		prm->prec = 0;
-        return (string);
+	prm->zero = 0;
+	prm->prec = 1;
+	string++;
+	if ((*string >= '0' && *string <= '9') || *string == '*')
+		string = ft_get_vl(string, list, &prm->precision, prm);
+	if (prm->precision < 0)
+		prm->prec = 0;
+	return (string);
 }
 
 char	*ft_get_wdth_nxt(t_prm *prm, char *tmp, char *str, int diff)
@@ -61,7 +61,7 @@ char	*ft_get_prc_nxt(t_prm *prm, char *tmp, char *str, int diff)
 	return (str);
 }
 
-char		*ft_get_value(char *string, va_list list, int *param, t_prm *prm)
+char	*ft_get_vl(char *string, va_list list, int *param, t_prm *prm)
 {
 	*param = 0;
 	if (*string >= '0' && *string <= '9')

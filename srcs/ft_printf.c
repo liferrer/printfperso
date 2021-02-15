@@ -6,13 +6,13 @@
 /*   By: liferrer <liferrer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 14:37:52 by liferrer          #+#    #+#             */
-/*   Updated: 2021/02/10 15:34:12 by liferrer         ###   ########.fr       */
+/*   Updated: 2021/02/15 12:09:34 by liferrer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-int		copyandsearch(t_prm *prm, char *string, char **result, va_list list)
+int		cpysrch(t_prm *prm, char *string, char **result, va_list list)
 {
 	while (*string)
 	{
@@ -45,7 +45,7 @@ int		ft_printf(const char *string, ...)
 		return (0);
 	ft_memset(&prm, 0, sizeof(prm));
 	va_start(list, string);
-	copyandsearch(&prm, (char*)string, &result, list);
+	cpysrch(&prm, (char*)string, &result, list);
 	va_end(list);
 	write(1, result, prm.len);
 	free(result);
